@@ -14,7 +14,7 @@ class DB
 	private function __construct()
 	{
 		// Connexion à la base de données
-		$connStr = 'mysql:host=localhost;dbname=comptes';
+		$connStr = 'mysql:host=localhost;dbname=projetphp';
 		try
 		{
 			// Connexion à la base
@@ -122,6 +122,12 @@ class DB
 		$requete = 'SELECT * FROM projetphp.etudiant WHERE email = ?';
 		return $this->execQuery($requete,array($email),'Etudiant');
 	}
+
+	public function getPassword($email)
+	{
+		$requete ='SELECT mot_passe FROM projetphp.etudiant WHERE email = $email';
+		//return 
+	}
 	
 	public function insertEtudiant($email,$nom,$prenom,$mdp,$sexe,$date,$photo)
 	{
@@ -132,10 +138,10 @@ class DB
 
 	/*------------ méthodes de gestion des fiches académiques --------------*/
 
-	public function getFichesAcademiques()
+	public function getFichesAcademiques($email)
 	{
-		$requete = 'SELECT * FROM projetphp.v';
-		return $this->execQuery($requete,null,'Fiche_Academique');
+		$requete = 'SELECT * FROM projetphp.fiche_academique WHERE email_etud = ?';
+		return $this->execQuery($requete,array($email),'Fiche_Academique');
 	}
 
 	public function getFichesAcademique($id)

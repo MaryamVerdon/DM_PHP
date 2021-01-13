@@ -18,7 +18,6 @@
                             <div>
                                 <strong>Erreur</strong> le mot de passe ne peut pas être vide
                             </div>
-                        <?php
                         break;
 
                         case 'nom':

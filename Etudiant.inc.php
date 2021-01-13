@@ -15,7 +15,7 @@ class Etudiant
 		$this->email = $email;
 		$this->nom = $nom;
 		$this->prenom = $prenom;
-		$this->mdp = $mdp;
+		$this->mot_passe = $mdp;
 		$this->sexe = $sexe;
 		$this->date_naissance = $dateN;
 		$this->photo_profil = $photo;
@@ -24,9 +24,15 @@ class Etudiant
 	public function getEmail () { return $this->email; }
 	public function getNom   () { return $this->nom;   }
 	public function getPrenom () { return $this->prenom; }
-	public function getMdp () { return $this->mdp; }
+	public function getMdp () { return $this->mot_passe; }
 	public function getSexe () { return $this->sexe; }
 	public function getDateNaissance () { return $this->date_naissance; }
 	public function getPhotoProfil () { return $this->photo_profil; }
+
+	public function __toString()
+	{
+		$res = 'Email : '.$this->email.'      mdp : '.$this->mot_passe;
+		return $res;
+	}
 }
 ?>

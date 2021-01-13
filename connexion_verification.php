@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'configBD.php';
+require_once 'DB.inc.php';
 
 if(isset($_POST['email']) && isset($_POST['password']))
 {
@@ -8,26 +8,30 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
-    $req = $bdd->prepare('SELECT Email, MotDePasse FROM etudiant WHERE Email = ?');
-    $req->execute(array($email));
-    $data = $req->fetch();
-    $row = $req->rowCount(); //vérifier si le user existe ou pas dans la table
-
-    if($row == 1)
+    $db = DB::getInstance();
+    if ($db == null) echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
+    else try
     {
-        if(filter_var($email, FILTER_VALIDATE_EMAIL))
+        $etudiant = $db->getEtudiant($email)[0];
+
+        if($etudiant != null)
         {
-            $password = hash('sha256', $password);
-            //vérification du MotDePasse
-            if($data['MotDePasse'] == $password )
+            if(filter_var($email, FILTER_VALIDATE_EMAIL) && $etudiant->getEmail() == $email)
             {
-                //creation d'un session
-                $_SESSION['user'] = $data['Email'];
-                header('Location: profil.php');
-            } else { header('Location: connexion.php?login_err=password'); }
-        }else { header('Location: connexion.php?login_err=email'); }
-    } else { header('Location: connexion.php?login_err=already'); }
-} else { header('Location: connexion.php'); }
+                $password = hash('sha256', $password);
+                //vérification du MotDePasse
+                if($password == $etudiant->getMdp())
+                {
+                    //creation d'un session
+                    $_SESSION['user'] = $email;
+                    header('Location: index.php');
+                }else { header('Location: connexion.php?login_err=password'); }
+            }else { header('Location: connexion.php?login_err=email'); }
+        }else { header('Location: connexion.php?login_err=already'); }
+    }
+    catch (Exception $e) { echo $e->getMessage(); }
+    $db->close();
+} else { header('Location: index.php'); }
 
 
 ?>
