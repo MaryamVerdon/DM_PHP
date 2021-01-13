@@ -123,6 +123,7 @@ class DB
 		return $this->execQuery($requete,array($email),'Etudiant');
 	}
 
+
 	public function getPassword($email)
 	{
 		$requete ='SELECT mot_passe FROM projetphp.etudiant WHERE email = $email';

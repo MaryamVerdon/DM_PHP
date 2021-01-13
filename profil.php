@@ -1,16 +1,15 @@
 <?php
+require 'DB.inc.php';
 session_start();
-if(!isset($_SESSION['user']))
-{
-    header('Location: connexion.php');
-}
+if(!isset($_SESSION['user'])) header('Location: connexion.php');
 
-require_once "DB.inc.php";
+$email = $_SESSION['user'];
+
 $db = DB::getInstance();
-// On récupère les informations de l'utilisateur connecté
-/*$afficher_profil = $db->prepare("SELECT * FROM etudiant WHERE email = ?");
-$afficher_profil->execute(array($_SESSION['user']));
-$data = $afficher_profil->fetch(); */
+if ($db == null) echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
+else try
+{
+$etudiant = $db-> getEtudiant($email)[0];
 
 ?>
 
@@ -23,12 +22,10 @@ $data = $afficher_profil->fetch(); */
 
     <body>
 
-    <h1> Profil de  <?php  echo $data['Prenom'] . " " . $data['Nom']; ?></h1>
+    <h1> Profil de  <?php  echo $etudiant->getPrenom() . " " . $etudiant->getNom() ; ?></h1>
     <ul>
-        <li>Adresse mail: <?= $data['Email'] ?></li>
-        <li>Date de Naissande: <?= $data['DateNaissance'] ?></li>
-        <li>Sexe: <?= $data['Sexe'] ?></li>
-        <li>Photo : <?= $data['Photo'] ?></li> 
+        <?php  echo $etudiant->getPhotoProfil(); ?>
+        <li>Photo : <img src="<?= $etudiant->getPhotoProfil(); ?>" alt="photo profil"></li>
     </ul>
     <a href="deconnexion.php">Déconnexion</a>
 
@@ -36,5 +33,9 @@ $data = $afficher_profil->fetch(); */
     </body>
 </html>
 
-
+    <?php
+}
+catch (Exception $e) { echo $e->getMessage(); }
+$db->close();
+?>
 
