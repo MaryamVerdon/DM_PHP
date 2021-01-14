@@ -29,9 +29,6 @@
 					<th> Date de fin </th>
 				</tr>
 
-				<?php
-					
-				?>
 			</tbody>
 			
 		</table>

@@ -14,6 +14,7 @@
 
     <body>
 
+   <!-- Gestion des erreurs -->
         <?php 
             if(isset($_GET['reg_err']))
             {

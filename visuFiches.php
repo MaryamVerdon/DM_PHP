@@ -1,5 +1,5 @@
 <?php
-	require 'DB.inc.php';
+	require 'classe/DB.inc.php';
 	session_start();
 
 	if(!isset($_SESSION['user'])) header('Location: index.php');

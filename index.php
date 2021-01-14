@@ -15,6 +15,7 @@
 
     <body>
 
+    <!-- Gestion des erreurs -->
         <?php 
             if(isset($_GET['login_err']))
             {
@@ -84,8 +85,6 @@
                 </div>
             </div>
         </div>
-
-
     </body>
 </html>
 
