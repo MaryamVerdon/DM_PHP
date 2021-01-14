@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'DB.inc.php';
+require 'DB.inc.php';
 
 if(isset($_POST['email']) && isset($_POST['password']))
 {

@@ -150,10 +150,32 @@ class DB
 		return $this->execQuery($requete,array($id),'Fiche_Academique');
 	}
 
+	public function getFichesAcademiquesTri($email,$tri)
+	{
+		$requete = 'SELECT * FROM projetphp.fiche_academique WHERE email_etud = ? ORDER BY '.$tri;
+		return $this->execQuery($requete,array($email),'Fiche_Academique');
+	}
+
 	public function insertFichesAcademique($email,$etab,$pays,$formation,$niveau,$dateDeb,$dateFin)
 	{
 		$requete = 'INSERT INTO projetphp.fiche_academique VALUES(?,?,?,?,?,?,?,?)'; 
 		$tparam = array(0,$email,$etab,$pays,$formation,$niveau,$dateDeb,$dateFin);
+		return $this->execMaj($requete,$tparam);
+	}
+
+	public function updateFicheAcademique($id,$email,$etab,$pays,$formation,$niveau,$dateDeb,$dateFin)
+	{
+		$requete = 'UPDATE projetphp.fiche_academique SET email_etud = ?, nom_etab = ?, pays = ?, 
+														  nom_form = ?, niveau = ?, date_deb = ?,
+														  date_fin = ? WHERE id_fiche = ?';
+		$tparam = array($email,$etab,$pays,$formation,$niveau,$dateDeb,$dateFin,$id);
+		return $this->execMaj($requete,$tparam);
+	}
+
+	public function deleteFicheAcademique($id)
+	{
+		$requete ='DELETE FROM projetphp.fiche_academique WHERE id_fiche = ?';
+		$tparam = array($id);
 		return $this->execMaj($requete,$tparam);
 	}
 	
