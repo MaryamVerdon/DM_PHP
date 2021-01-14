@@ -23,7 +23,7 @@
                     {
                         case 'password':
                         ?>
-                            <div>
+                            <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> mot de passe incorrect
                             </div>
                         <?php
@@ -31,7 +31,7 @@
 
                         case 'email':
                         ?>
-                            <div>
+                            <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> email incorrect
                             </div>
                         <?php
@@ -39,7 +39,7 @@
 
                         case 'success':
                             ?>
-                                <div>
+                                <div class="alert alert-success" role="alert">
                                     Inscription terminé !
                                 </div>
                             <?php
@@ -47,7 +47,7 @@
 
                         case 'already':
                         ?>
-                             <div>
+                             <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> compte non existant
                             </div>
                         <?php

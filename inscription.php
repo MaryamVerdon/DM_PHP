@@ -22,14 +22,15 @@
                     {
                         case 'password':
                         ?>
-                            <div>
+                            <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> le mot de passe ne peut pas être vide
                             </div>
+                            <?php
                         break;
 
                         case 'nom':
                             ?>
-                                <div>
+                                <div class="alert alert-danger" role="alert">
                                     <strong>Erreur</strong> nom incorrect
                                 </div>
                             <?php
@@ -37,7 +38,7 @@
 
                         case 'prenom':
                             ?>
-                                <div>
+                                <div class="alert alert-danger" role="alert">
                                     <strong>Erreur</strong> prenom incorrect
                                 </div>
                             <?php
@@ -45,7 +46,7 @@
 
                         case 'email':
                         ?>
-                            <div>
+                            <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> email incorrect
                             </div>
                         <?php
@@ -53,7 +54,7 @@
 
                         case 'date':
                             ?>
-                                <div>
+                                <div class="alert alert-danger" role="alert">
                                     <strong>Erreur</strong> la date saisie doit être du format : jj/mm/aaaa.
                                 </div>
                             <?php
@@ -61,7 +62,7 @@
 
                         case 'fichier_extension':
                             ?>
-                                <div>
+                                <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> Le fichier doit être en : .jpg, .jpeg, .png ou .gif
                                 </div>
                             <?php
@@ -69,7 +70,7 @@
                             
                         case 'fichier_size':
                             ?>
-                                <div>
+                                <div class="alert alert-danger" role="alert">
                                     <strong>Erreur</strong> Le fichier est trop volumineux.
                                 </div>
                             <?php
@@ -77,7 +78,7 @@
                             
                         case 'fichier_err':
                             ?>
-                                <div>
+                                <div class="alert alert-danger" role="alert">
                                     <strong>Erreur</strong> Le fichier est endommagé
                                 </div>
                             <?php
@@ -86,7 +87,7 @@
 
                         case 'success':
                             ?>
-                                <div>
+                                <div class="alert alert-success" role="alert">
                                     Inscription terminé !
                                 </div>
                             <?php
@@ -94,7 +95,7 @@
 
                         case 'already':
                         ?>
-                             <div>
+                             <div class="alert alert-danger" role="alert">
                                 <strong>Erreur</strong> Vous ne vous êtes pas inscrit 
                         <?php
                         break;
@@ -102,22 +103,7 @@
                         default : 
                     }
                 }
-                ?> 
-
-
-        <!--<form action="inscription_verification.php" method="post" enctype="multipart/form-data">
-            <input type="text" name="nom" placeholder="Nom">
-            <input type="text" name="prenom" placeholder="Prénom">
-            <input type="email" name="email" placeholder="Email">
-           <label>Date de naissance : <input type="date" name="dateNaissance"></label>
-           <label>Sexe : </label>
-            <input type="radio" name="sexe" value="1" id="femme" checked="checked" /> <label for="femme">Femme</label>
-            <input type="radio" name="sexe" value="0" id="homme" /> <label for="homme">Homme</label>
-            <input type="password" name="password" placeholder="Mot de passe">
-            <input type="file" name="monfichier" />
-            <button type="submit">Valider</button>
-           <a href="index.php">Retour Accueil</a> 
-        </form> -->
+                ?>
 
                                  <div class="container">
                                      <div class="row">
@@ -176,6 +162,5 @@
                                          </div>
                                      </div>
                                  </div>
-
     </body>
 </html>
