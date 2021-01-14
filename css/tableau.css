@@ -1,3 +1,20 @@
+
+/* CSS navbar */
+
+.navbar {
+    background-color: #8abf9c;
+    margin-bottom: 3em;
+}
+
+.nav-item, .navbar-brand {
+    color: white;
+}
+
+.nav-item:hover, .navbar-brand:hover {
+    color: #025930;
+}
+
+/* CSS fiches */
 thead tr th {
     color: #025930;
 }
@@ -36,4 +53,8 @@ tbody a:hover {
 .table2 td {
     color: #8abf9c;
     font-weight: bold;
+}
+
+.table2 thead tr th {
+    border: none;
 }

@@ -38,6 +38,19 @@
 	</head>
 
 	<body>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#">Menu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="profil.php">Profil</a>
+                    <a class="nav-item nav-link" href="visuFiches.php">Consulter fiches</a>
+                    <a class="nav-item nav-link" href="regFiches.php">Ajouter fiche</a>
+                </div>
+            </div>
+        </nav>
 		<form action="handleFiche.php" method="POST">
 			<table class="table table-hover mt-5">
 				<thead><tr><th> Liste des fiches académiques </th></tr></thead>
@@ -78,10 +91,6 @@
 				</tbody>
 			</table>
 		</form>
-        <div class="mt-2 ml-5">
-            <a href="profil.php" class="btnProfil btn">Retour Profil</a>
-            <a href="regFiches.php" class="btnFiche btn">Ajouter une fiche</a>
-        </div>
 
 	</body>
 
