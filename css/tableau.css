@@ -1,0 +1,34 @@
+thead tr th {
+    color: #025930;
+}
+
+.table-hover thead tr th {
+    border: none;
+    font-size: 20px;
+}
+
+.table-hover tbody tr th {
+    border: none;
+}
+
+tbody a, tbody th {
+    color: #8abf9c;
+}
+
+tbody a:hover {
+    color: #778c7c;
+}
+
+.btnSuppr, .btnProfil , .btnFiche {
+    color: white;
+    background: #025930;
+}
+
+.btnSuppr:hover, .btnProfil:hover , .btnFiche:hover {
+    color: white;
+    background: #778c7c;
+}
+
+.table-hover tbody tr:hover td {
+    background: #bad9c5;
+}

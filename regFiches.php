@@ -13,7 +13,6 @@
             if ($db == null) echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
             else try
             {
-                $idFiche = $_POST["idFiche"];
                 $email = $_POST["email"];
                 $nomEtab = $_POST["nomEtab"];
                 $pays = $_POST["pays"];
@@ -21,12 +20,12 @@
                 $niveau = $_POST["niveau"];
                 $dateDeb = $_POST["dateDeb"];
                 $dateFin = $_POST["dateFin"];
-
                 $db->insertFichesAcademique($email,$nomEtab,$pays,$nomForm,$niveau,$dateDeb,$dateFin);
+
             }
             catch (Exception $e) { echo $e->getMessage(); }
             $db->close();
-            //header('Location: visuFiches.php');
+            header('Location: visuFiches.php');
 
         }
 	    else {

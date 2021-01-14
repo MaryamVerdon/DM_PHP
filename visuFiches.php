@@ -30,19 +30,16 @@
 		<meta name="description" content=" Fiches Académiques ">
 		<!--link rel="stylesheet" href="CSS/styleGeneral.css"-->
 		<link rel="icon" type="image/png" href="Images/Header/logo.png" />
+        <!-- css -->
+        <link rel="stylesheet" href="css/tableau.css">
+        <!--bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<title> Fiches Académiques </title>
 	</head>
 
 	<body>
-		<nav> 
-			<a href="inscription.php"> Inscription </a>
-			<a href="connexion.php"> Connexion </a>
-			<a href="visuFiches.php"> Liste des fiches </a>
-			<a href="regFiches.php"> Création de fiche </a>
-		 </nav>
-
 		<form action="handleFiche.php" method="POST">
-			<table>
+			<table class="table table-hover mt-5">
 				<thead><tr><th> Liste des fiches académiques </th></tr></thead>
 				<tbody>
 					<tr>
@@ -69,8 +66,8 @@
 								echo('<td>'.$fiche->getNiveau().'</td>');
 								echo('<td>'.$fiche->getDateDebut().'</td>');
 								echo('<td>'.$fiche->getDateFin().'</td>');
-								echo('<td><a class="btnModif" id="'.$i.'"> Modifier </a></td>');
-								echo('<td><a class="btnSuppr" id="'.$fiche->getID().'" href="handleFiche?delId='.$fiche->getID().'"> Supprimer </a></td>');
+								echo('<td><a class="btnModif btn btn-outline-success" id="'.$i.'"> Modifier </a></td>');
+								echo('<td><a class="btnSuppr btn" id="'.$fiche->getID().'" href="handleFiche?delId='.$fiche->getID().'"> Supprimer </a></td>');
 								echo('</tr>');
 								$i++;
 							}
@@ -81,9 +78,14 @@
 				</tbody>
 			</table>
 		</form>
+        <div class="mt-2 ml-5">
+            <a href="profil.php" class="btnProfil btn">Retour Profil</a>
+            <a href="regFiches.php" class="btnFiche btn">Ajouter une fiche</a>
+        </div>
+
 	</body>
 
-	<script type="text/javascript" src="modifier.js"></script>
+	<script type="text/javascript" src="js/modifier.js"></script>
 
 </html>
 
