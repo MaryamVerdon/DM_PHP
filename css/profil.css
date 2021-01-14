@@ -1,0 +1,41 @@
+body {
+    background: #025930;
+    background: linear-gradient(to right, #8abf9c, #bad9c5);
+}
+
+.card {
+    width: 25rem;
+    margin-top: 5em;
+}
+
+.card-link{
+    color: #8abf9c;
+}
+
+.card-link:hover{
+    color: #778c7c;
+}
+
+.card-title {
+    color: #8abf9c;
+}
+
+.btn {
+    background-color: #8abf9c;;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #778c7c;
+    color: white;
+}
+
+.card-text {
+    font-weight: bold;
+    color: #778c7c;
+}
+
+span {
+    font-weight: normal;
+    color: black;
+}

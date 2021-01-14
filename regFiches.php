@@ -6,22 +6,33 @@
 
 	if(isset($_POST["email"]) && isset($_POST["nomEtab"]) && isset($_POST["pays"]) && isset($_POST["nomForm"]) && isset($_POST["niveau"]) && isset($_POST["dateDeb"]) && isset($_POST["dateFin"]))
 	{
-		$db = DB::getInstance();
-		if ($db == null) echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
-		else try
-		{
-			$email = $_POST["email"];
-			$nomEtab = $_POST["nomEtab"];
-			$pays = $_POST["pays"];
-			$nomForm = $_POST["nomForm"];
-			$niveau = $_POST["niveau"];
-			$dateDeb = $_POST["dateDeb"];
-			$dateFin = $_POST["dateFin"];
-			$db->insertFichesAcademique($email,$nomEtab,$pays,$nomForm,$niveau,$dateDeb,$dateFin);
-		}
-		catch (Exception $e) { echo $e->getMessage(); }
-		$db->close();
-		//header('Location: visuFiches.php');
+
+	    if (filter_var($_POST['dateDeb'], FILTER_VALIDATE_INT) && filter_var($_POST['dateFin'], FILTER_VALIDATE_INT))
+        {
+            $db = DB::getInstance();
+            if ($db == null) echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
+            else try
+            {
+                $idFiche = $_POST["idFiche"];
+                $email = $_POST["email"];
+                $nomEtab = $_POST["nomEtab"];
+                $pays = $_POST["pays"];
+                $nomForm = $_POST["nomForm"];
+                $niveau = $_POST["niveau"];
+                $dateDeb = $_POST["dateDeb"];
+                $dateFin = $_POST["dateFin"];
+
+                $db->insertFichesAcademique($email,$nomEtab,$pays,$nomForm,$niveau,$dateDeb,$dateFin);
+            }
+            catch (Exception $e) { echo $e->getMessage(); }
+            $db->close();
+            //header('Location: visuFiches.php');
+
+        }
+	    else {
+            header('Location: regFiches.php?reg_err=date');
+        }
+
 	}
 ?>
 
@@ -35,9 +46,18 @@
 		<meta name="description" content=" Fiches Académiques ">
 		<!--link rel="stylesheet" href="CSS/styleGeneral.css"-->
 		<link rel="icon" type="image/png" href="Images/Header/logo.png" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<title> Fiches Académiques </title>
 	</head>
 
+    <?php
+    if(isset($_GET['reg_err'])) {
+        $err = htmlspecialchars($_GET['reg_err']);
+        echo "<div class='alert alert-danger' role='alert'>
+            <strong>Erreur</strong> la date doit être en chiffre (exemple : 2021)
+        </div>";
+    }
+    ?>
 	<body>
 		<nav> 
 			<a href="inscription.php"> Inscription </a>
