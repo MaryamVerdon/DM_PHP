@@ -104,7 +104,7 @@
                 }
                 ?> 
 
-       <h1>Inscription</h1>
+
         <!--<form action="inscription_verification.php" method="post" enctype="multipart/form-data">
             <input type="text" name="nom" placeholder="Nom">
             <input type="text" name="prenom" placeholder="Prénom">
