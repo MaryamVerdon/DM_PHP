@@ -2,7 +2,7 @@
 	require'DB.inc.php';
 
 	session_start();
-	if(!isset($_SESSION['user'])) header('Location: connexion.php');
+	if(!isset($_SESSION['user'])) header('Location: index.php');
 
 	if(isset($_POST["email"]) && isset($_POST["nomEtab"]) && isset($_POST["pays"]) && isset($_POST["nomForm"]) && isset($_POST["niveau"]) && isset($_POST["dateDeb"]) && isset($_POST["dateFin"]))
 	{
@@ -43,6 +43,8 @@
 		<meta name="author" content="Arthur ALAIN"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content=" Fiches Académiques ">
+        <!-- css -->
+        <link rel="stylesheet" href="css/tableau.css">
 		<!--link rel="stylesheet" href="CSS/styleGeneral.css"-->
 		<link rel="icon" type="image/png" href="Images/Header/logo.png" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -58,15 +60,8 @@
     }
     ?>
 	<body>
-		<nav> 
-			<a href="inscription.php"> Inscription </a>
-			<a href="connexion.php"> Connexion </a>
-			<a href="visuFiches.php"> Liste des fiches </a>
-			<a href="regFiches.php"> Création de fiche </a>
-		 </nav>
-
 		<form action="regFiches.php" method="POST">
-		<table>
+		<table class="table2 table">
 			<thead>
 				<tr><th> Enregistrer des fiches académique </th></tr>
 			</thead>
@@ -79,11 +74,15 @@
 					<td><label for="niveau"> Niveau </label> <input type="number" id="niveau" name="niveau"></td>
 					<td><label for="dateDeb"> Date de début </label> <input type="text" id="dateDeb" name="dateDeb"></td>
 					<td><label for="dateFin"> Date de fin </label> <input type="text" id="dateFin" name="dateFin"></td>
-					<td> <input type="submit" id="valider" name="valider" value="valider"> </td>
+					<td> <input class="btnFiche btn mt-4" type="submit" id="valider" name="valider" value="valider"> </td>
 				</tr>
 			</tbody>
 		</table>
 		</form>
+        <div class="mt-2 ml-5">
+            <a href="profil.php" class="btnProfil btn">Retour Profil</a>
+            <a href="visuFiches.php" class="btnFiche btn">Voir mes fiches</a>
+        </div>
 	</body>
 
 </html>

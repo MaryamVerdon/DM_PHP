@@ -2,7 +2,7 @@
 	require 'DB.inc.php';
 
 	session_start();
-	if(!isset($_SESSION['user'])) header('Location: connexion.php');
+	if(!isset($_SESSION['user'])) header('Location: index.php');
 
 	$db = DB::getInstance();
 	if ($db == null) echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";

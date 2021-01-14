@@ -1,42 +1,91 @@
 <?php
-  session_start();
-  if(isset($_SESSION['user'])) echo($_SESSION['user']);
+//require_once ('index.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title>Accueil</title>
-        <!-- style -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <title>Connexion</title>
+        <!--css-->
+        <link rel="stylesheet" href="css/connexion.css">
+        <!--font & bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     </head>
 
     <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Menu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="index.php">Accueil</a>
-                    <a class="nav-link" href="inscription.php">Inscription</a>
-                    <a class="nav-link" href="connexion.php">Connexion</a>
-                    <a class="nav-link" href="profil.php">Profil</a>
-                    <a class="nav-link" href="regFiches.php">Création fiche</a>
-                    <a class="nav-link" href="visuFiches.php">Fiches</a>
+        <?php 
+            if(isset($_GET['login_err']))
+            {
+                $err = htmlspecialchars($_GET['login_err']);
+                    switch($err)
+                    {
+                        case 'password':
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Erreur</strong> mot de passe incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'email':
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Erreur</strong> email incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'success':
+                            ?>
+                                <div class="alert alert-success" role="alert">
+                                    Inscription terminé !
+                                </div>
+                            <?php
+                            break;
+
+                        case 'already':
+                        ?>
+                             <div class="alert alert-danger" role="alert">
+                                <strong>Erreur</strong> compte non existant
+                            </div>
+                        <?php
+                        break;
+
+                        default : 
+                    }
+                }
+                ?>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Connexion</h5>
+                            <form class="form-signin" action="connexion_verification.php" method="post">
+                                <div class="form-label-group">
+                                    <input type="email" id="inputEmail"  name="email" class="form-control" placeholder="Email" required>
+                                    <label for="inputEmail">Email</label>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Mot de passe" required>
+                                    <label for="inputPassword">Mot de passe</label>
+                                </div>
+
+                                <button class="btn btn-lg btn-block text-uppercase" type="submit">Connexion</button>
+                                <hr class="my-4">
+                                <a class="row url justify-content-md-center" href="inscription.php">Inscription</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
 
 
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>
+

@@ -42,7 +42,7 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && 
                                     $mdp = hash('sha256', $mdp);
                                     //INSERTION
                                     $db->insertEtudiant($email,$nom,$prenom,$mdp,$sexe,$date,$chemin);
-                                    header('Location: connexion.php?login_err=success');
+                                    header('Location: index.php?login_err=success');
                                 } else { header('Location: inscription.php?reg_err=password'); } 
                              } else { header('Location: inscription.php?reg_err=fichier_extension'); } 
                     } else { header('Location: inscription.php?reg_err=fichier_size'); } 

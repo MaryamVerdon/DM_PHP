@@ -24,10 +24,10 @@ if(isset($_POST['email']) && isset($_POST['password']))
                 {
                     //creation d'un session
                     $_SESSION['user'] = $email;
-                    header('Location: index.php');
-                }else { header('Location: connexion.php?login_err=password'); }
-            }else { header('Location: connexion.php?login_err=email'); }
-        }else { header('Location: connexion.php?login_err=already'); }
+                    header('Location: profil.php');
+                }else { header('Location: index.php?login_err=password'); }
+            }else { header('Location: index.php?login_err=email'); }
+        }else { header('Location: index.php?login_err=already'); }
     }
     catch (Exception $e) { echo $e->getMessage(); }
     $db->close();
