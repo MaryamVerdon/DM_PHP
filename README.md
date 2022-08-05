@@ -3,7 +3,7 @@
 Lors de ce projet en tant qu’étudiants en Licence Professionnelle DASI, notre objectif était de réaliser un site web en PHP, permettant à des étudiants 
 de gérer des fiches personnelles concernant leur parcours académique.
 
-Technologies utilisées: `PHP`, `HTML5`, `CSS3`, `Bootstrap`
+Technologies utilisées: `PHP`, `HTML5`, `CSS3`
 
 ## Conception 
 
